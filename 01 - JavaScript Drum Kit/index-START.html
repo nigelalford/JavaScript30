@@ -58,7 +58,19 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
-
+  // read the data.key to pull the key code
+  document.addEventListener('keydown', event => {
+    // keydown event listener https://css-tricks.com/snippets/javascript/javascript-keycodes/
+    // ES6 build array from html collection returns an html collection
+    // html collection: https://developer.mozilla.org/en-US/docs/Web/API/HTMLCollection
+    // array.from: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from
+    // keycode comes off as a number stringify it
+    Array.from(document.getElementsByTagName('audio')).forEach(a => {
+      if(a.getAttribute('data-key') === event.keyCode.toString()){
+        a.play();
+      }
+    })
+  })
 </script>
 
 
